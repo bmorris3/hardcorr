@@ -18,7 +18,7 @@ def test_periods(n_points_missing):
                        0.7*np.cos(2*np.pi/secondary_period * (all_times - 2.5)))
 
     # Remove some fluxes, times from those data:
-    #n_points_missing = 200  # This number is approximate
+    # n_points_missing = 200  # This number is approximate
     missing_indices = np.unique(np.random.randint(0, n_points,
                                                   size=n_points_missing))
     mask = list(set(np.arange(len(all_times))).difference(set(missing_indices)))
