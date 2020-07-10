@@ -2,6 +2,7 @@ import numpy as np
 import pytest
 from ..core import interpolated_acf, dominant_period
 
+
 @pytest.mark.parametrize("n_points_missing",
                          [(i) for i in np.linspace(100, 300, 10, dtype=int)])
 def test_periods(n_points_missing):
