@@ -133,7 +133,7 @@ def interpolated_acf(times, fluxes, cadences=None):
 
 
 def dominant_period(lag, acf, min=None, max=None, fwhm=18, window=56,
-                    plot=False, quiet=False, n_peaks=1):
+                    plot=False, quiet=False, n_peaks=1, return_amplitude=False):
     """
     Find the dominant period in the smoothed autocorrelation function.
 
@@ -161,6 +161,8 @@ def dominant_period(lag, acf, min=None, max=None, fwhm=18, window=56,
         Don't raise warning if no period is found. Default is `False`.
     n_peaks : int (optional)
         Number of peaks in the ACF to return, default is one.
+    return_amplitude : bool (optional)
+        Return the amplitude of the ACF at the peaks if `True`.
 
     Return
     ------
@@ -203,6 +205,7 @@ def dominant_period(lag, acf, min=None, max=None, fwhm=18, window=56,
         # Detect highest peak
         absolute_max_index = relative_maxes[np.argmax(smooth_acf[relative_maxes])]
         acf_period = lag_limited[absolute_max_index]
+        acf_amplitude = acf_limited[absolute_max_index]
 
     else:
         first_n_peaks = relative_maxes[np.argsort(smooth_acf[relative_maxes])[::-1]][:n_peaks]
@@ -226,5 +229,8 @@ def dominant_period(lag, acf, min=None, max=None, fwhm=18, window=56,
         ax.spines['right'].set_visible(False)
         ax.spines['top'].set_visible(False)
         ax.grid(ls=':')
+
+    if return_amplitude:
+        return acf_period, acf_amplitude
 
     return acf_period
