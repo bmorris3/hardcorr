@@ -1,6 +1,13 @@
 Fast autocorrelation functions
 ------------------------------
 
+.. image:: https://travis-ci.com/bmorris3/hardcorr.svg?branch=master
+    :target: https://travis-ci.com/bmorris3/hardcorr
+
+.. image:: https://readthedocs.org/projects/hardcorr/badge/?version=latest
+    :target: https://hardcorr.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
+
 .. image:: http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat
     :target: http://www.astropy.org
     :alt: Powered by Astropy Badge
