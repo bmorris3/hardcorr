@@ -205,12 +205,12 @@ def dominant_period(lag, acf, min=None, max=None, fwhm=18, window=56,
         # Detect highest peak
         absolute_max_index = relative_maxes[np.argmax(smooth_acf[relative_maxes])]
         acf_period = lag_limited[absolute_max_index]
-        acf_amplitude = acf_limited[absolute_max_index]
+        acf_amplitude = smooth_acf[absolute_max_index]
 
     else:
         first_n_peaks = relative_maxes[np.argsort(smooth_acf[relative_maxes])[::-1]][:n_peaks]
         acf_period = lag_limited[first_n_peaks]
-        acf_amplitude = acf_limited[first_n_peaks]
+        acf_amplitude = smooth_acf[first_n_peaks]
 
     if plot:
         import matplotlib.pyplot as plt
